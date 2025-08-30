@@ -39,12 +39,11 @@ bool LoRaManager::sendSensorReadings(SensorData sensorData)
     char buffer[256];
 
     snprintf(buffer, sizeof(buffer),
-             "{\"temperature\":%.1f,\"humidity\":%.1f,\"pressure\":%.1f,\"gas_resistance\":%.1f,\"timestamp\":%lu}",
+             "{\"temperature\":%.1f,\"humidity\":%.1f,\"pressure\":%.1f,\"gas_resistance\":%.1f}",
              sensorData.temperature,
              sensorData.humidity,
              sensorData.pressure,
-             sensorData.gasResistance,
-             millis());
+             sensorData.gasResistance);
 
     return this->sendMessage(buffer);
 }

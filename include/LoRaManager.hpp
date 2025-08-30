@@ -41,8 +41,27 @@ class LoRaManager
          */
         [[nodiscard]] bool begin();
 
-
+        /**
+         * @brief Send a raw message string via LoRa.
+         *
+         * Attempts to send the provided null-terminated message.
+         *
+         * @param msg The message string to send.
+         *
+         * @return true if the message was successfully queued and transmitted
+         * @return false if sending failed (e.g. empty message or LoRa not ready)
+         */
         bool sendMessage(const char* msg);
 
+        /**
+         * @brief Send formatted sensor readings as a JSON string via LoRa.
+         *
+         * Converts the given SensorData struct into a JSON payload and transmits it.
+         *
+         * @param sensorData The sensor readings to encode and send.
+         *
+         * @return true if the message was successfully transmitted
+         * @return false if transmission failed
+         */
         bool sendSensorReadings(SensorData sensorData);
 };
